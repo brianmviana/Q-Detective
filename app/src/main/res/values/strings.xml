@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Q-Detective</string>
+    <string-array name="listaCategoriaDenuncia">
+        <item>Vias públicas de acesso</item>
+        <item>Equipamentos comunitários</item>
+        <item>Limpeza urbana e saneamento</item>
+    </string-array>
+</resources>

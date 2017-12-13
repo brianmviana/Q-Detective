@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InicialActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Denuncie por:"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="100dp">
+        <Button
+            android:id="@+id/addDenunciaFoto"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Foto"
+            android:layout_marginTop="15dp"
+            />
+        <Button
+            android:id="@+id/addDenunciaVideo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Video"
+            android:layout_marginTop="15dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/listarDenunciaInicial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listar Denuncia"
+        android:layout_marginTop="15dp"/>
+
+
+    <!--<Button-->
+        <!--android:id="@+id/location"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Location"-->
+        <!--android:layout_marginTop="15dp"/>-->
+</LinearLayout>

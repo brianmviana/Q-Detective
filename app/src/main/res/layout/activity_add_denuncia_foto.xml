@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/barraSuperiorFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#015488"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Denuncia"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/fotoDenuncia"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/barraSuperiorFoto"
+        android:src="@drawable/imagem_denuncia" />
+
+    <EditText
+        android:id="@+id/usuarioEditTextFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barraSuperiorFoto"
+        android:layout_toEndOf="@+id/fotoDenuncia"
+        android:hint="Nome do Usuario"
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        android:id="@+id/linearLLFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usuarioEditTextFoto"
+        android:layout_toEndOf="@+id/fotoDenuncia"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/latitudeTextViewFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude"
+            android:layout_marginLeft="50dp"/>
+        <TextView
+            android:id="@+id/longitudeTextViewFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/descricaoEditTextFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLLFoto"
+        android:layout_toEndOf="@+id/fotoDenuncia"
+        android:hint="Descrição"
+        />
+
+    <Spinner
+        android:id="@+id/categoriaSpinnerFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descricaoEditTextFoto"
+        android:layout_toEndOf="@+id/fotoDenuncia"
+        android:entries="@array/listaCategoriaDenuncia">
+
+    </Spinner>
+
+    <Button
+        android:id="@+id/dataButtonFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoriaSpinnerFoto"
+        android:layout_toEndOf="@+id/fotoDenuncia"
+        android:focusedByDefault="true"
+        android:onClick="cadastrarData" />
+
+    <Button
+        android:id="@+id/buttonSalvarFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dataButtonFoto"
+        android:onClick="salvarDenuncia"
+        android:text="Salvar" />
+
+</RelativeLayout>

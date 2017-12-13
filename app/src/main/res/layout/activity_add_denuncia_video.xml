@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/barraSuperiorVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#015488"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Denuncia"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearVideo"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/barraSuperiorVideo">
+
+        <VideoView
+            android:id="@+id/videoDenuncia"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:src="@drawable/imagem_denuncia" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/usuarioEditTextVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/barraSuperiorVideo"
+        android:layout_toEndOf="@+id/linearVideo"
+        android:hint="Nome do Usuario"
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        android:id="@+id/linearLLVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usuarioEditTextVideo"
+        android:layout_toEndOf="@+id/linearVideo"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/latitudeTextViewVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude"
+            android:layout_marginLeft="50dp"/>
+        <TextView
+            android:id="@+id/longitudeTextViewVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/descricaoEditTextVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLLVideo"
+        android:hint="Descrição"
+        android:layout_toEndOf="@+id/linearVideo"/>
+
+    <Spinner
+        android:id="@+id/categoriaSpinnerVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descricaoEditTextVideo"
+        android:layout_toEndOf="@+id/linearVideo"
+        android:entries="@array/listaCategoriaDenuncia">
+
+    </Spinner>
+
+    <Button
+        android:id="@+id/dataButtonVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoriaSpinnerVideo"
+        android:layout_toEndOf="@+id/linearVideo"
+        android:focusedByDefault="true"
+        android:onClick="cadastrarData" />
+
+    <Button
+        android:id="@+id/buttonSalvarVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dataButtonVideo"
+        android:onClick="salvarDenunciaVideo"
+        android:text="Salvar" />
+
+    <Button
+        android:id="@+id/filmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dataButtonVideo"
+        android:layout_alignEnd="@+id/linearVideo"
+        android:layout_alignStart="@+id/buttonSalvarVideo"
+        android:layout_below="@+id/linearVideo"
+        android:layout_marginStart="16dp"
+        android:onClick="capturarVideo"
+        android:text="Filmar" />
+
+</RelativeLayout>
