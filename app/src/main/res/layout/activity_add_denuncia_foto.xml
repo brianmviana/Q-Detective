@@ -85,7 +85,7 @@
         android:layout_below="@+id/categoriaSpinnerFoto"
         android:layout_toEndOf="@+id/fotoDenuncia"
         android:focusedByDefault="true"
-        android:onClick="cadastrarData" />
+        android:onClick="cadastrarDataFoto" />
 
     <Button
         android:id="@+id/buttonSalvarFoto"
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/dataButtonFoto"
-        android:onClick="salvarDenuncia"
+        android:onClick="salvarDenunciaFoto"
         android:text="Salvar" />
 
 </RelativeLayout>

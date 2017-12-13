@@ -36,8 +36,8 @@ public class DenunciaDAO {
             int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Denuncia._ID));
             String descricao = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.DESCRICAO));
             Date data = new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Denuncia.DATA)));
-            String latitude = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LONGITUDE));
-            String longitude = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LATITUDE));
+            Double latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LONGITUDE)));
+            Double longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LATITUDE)));
             String uriMidia = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.URI_MIDIA));
             String usuario = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.USUARIO));
             String categoria = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.CATEGORIA));
@@ -134,8 +134,8 @@ public class DenunciaDAO {
         int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Denuncia._ID));
         String descricao = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.DESCRICAO));
         Date data = new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Denuncia.DATA)));
-        String latitude = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LATITUDE));
-        String longitude = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LONGITUDE));
+        Double latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LATITUDE)));
+        Double longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.LONGITUDE)));
         String uriMidia = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.URI_MIDIA));
         String usuario = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.USUARIO));
         String categoria = cursor.getString(cursor.getColumnIndex(DatabaseHelper.Denuncia.CATEGORIA));

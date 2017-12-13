@@ -24,10 +24,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,13 +35,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DenunciaFotoActivity extends Activity implements DatePickerFragment.EscutadorDoDatePickerDialog {
+public class DenunciaVideoActivity2 extends Activity implements DatePickerFragment.EscutadorDoDatePickerDialog {
 
-    private static final int CAPTURAR_IMAGEM = 1;
-    private EditText usuarioEditTextFoto, descricaoEditTextFoto;
-    private TextView latitudeTextViewFoto, longitudeTextViewFoto;
+    private static final int CAPTURAR_VIDEO = 1;
+    private EditText usuarioEditTextVideo, descricaoEditTextVideo;
+    private TextView latitudeTextViewVideo, longitudeTextViewVideo;
     private Spinner spinnerCategoria;
-    private Button salvarButton, dataButtonFoto;
+    private Button salvarButton, dataButtonVideo;
     private DenunciaDAO denunciaDAO;
     private Denuncia denuncia;
     private Date date;
@@ -49,10 +49,12 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
     private Bundle bundle = null;
     private int id;
 
-    private ImageView fotoDenuncia;
+    private VideoView videoDenuncia;
     private Uri uri;
 
     private LocationManager locationManager;
+
+    private Button buttonFilmar;
 
     @Override
     protected void onResume() {
@@ -67,27 +69,27 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_denuncia_foto);
+        setContentView(R.layout.activity_add_denuncia_video);
+
         denunciaDAO = new DenunciaDAO(this);
         denuncia = new Denuncia();
         id = 0;
-        usuarioEditTextFoto = findViewById(R.id.usuarioEditTextFoto);
-        descricaoEditTextFoto = findViewById(R.id.descricaoEditTextFoto);
-        latitudeTextViewFoto = findViewById(R.id.latitudeTextViewFoto);
-        longitudeTextViewFoto = findViewById(R.id.longitudeTextViewFoto);
-        dataButtonFoto = findViewById(R.id.dataButtonFoto);
-        spinnerCategoria = findViewById(R.id.categoriaSpinnerFoto);
-        fotoDenuncia = findViewById(R.id.fotoDenuncia);
-        salvarButton = findViewById(R.id.buttonSalvarFoto);
+        usuarioEditTextVideo = findViewById(R.id.usuarioEditTextVideo);
+        descricaoEditTextVideo = findViewById(R.id.descricaoEditTextVideo);
+        latitudeTextViewVideo = findViewById(R.id.latitudeTextViewVideo);
+        longitudeTextViewVideo = findViewById(R.id.longitudeTextViewVideo);
+        dataButtonVideo = findViewById(R.id.dataButtonVideo);
+        spinnerCategoria = findViewById(R.id.categoriaSpinnerVideo);
+        videoDenuncia = findViewById(R.id.videoDenuncia);
+        salvarButton = findViewById(R.id.buttonSalvarVideo);
 
 
         cal = Calendar.getInstance();
-        dataButtonFoto.setHint(new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime()));
-        fotoDenuncia.setOnClickListener(new View.OnClickListener() {
+        dataButtonVideo.setHint(new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime()));
+        videoDenuncia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 capturarImagem(v);
@@ -95,6 +97,7 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
         });
 
         getLocationManager();
+
     }
 
 
@@ -102,16 +105,16 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
         denuncia = denunciaDAO.buscarDenunciaPorId(id);
         String descricao = denuncia.getDescricao();
         date = denuncia.getData();
-        String latitude = (denuncia.getLatitude()).toString();
+        String latitude = denuncia.getLatitude().toString();
         String longitude = denuncia.getLongitude().toString();
         String foto = denuncia.getUriMidia();
         String usuario = denuncia.getUsuario();
         String categoria = denuncia.getCategoria();
-        descricaoEditTextFoto.setText(descricao);
-        usuarioEditTextFoto.setText(usuario);
-        latitudeTextViewFoto.setText(latitude);
-        longitudeTextViewFoto.setText(longitude);
-        dataButtonFoto.setText(new SimpleDateFormat("dd/MM/yyyy").format(date));
+        descricaoEditTextVideo.setText(descricao);
+        usuarioEditTextVideo.setText(usuario);
+        latitudeTextViewVideo.setText(latitude);
+        longitudeTextViewVideo.setText(longitude);
+        dataButtonVideo.setText(new SimpleDateFormat("dd/MM/yyyy").format(date));
         int pos = 0;
         for(int c = 0; c < (getResources().getStringArray(R.array.listaCategoriaDenuncia)).length ;c++){
             if(categoria == (getResources().getStringArray(R.array.listaCategoriaDenuncia))[c].toString()){
@@ -124,32 +127,32 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
             try {
                 uri = Uri.fromFile(getDiretorioDeSalvamento(foto));
                 Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-                fotoDenuncia.setImageBitmap(bitmap);
+//                videoDenuncia.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void salvarDenunciaFoto(View view) {
-        if (TextUtils.isEmpty(usuarioEditTextFoto.getText().toString().trim())) {
-            usuarioEditTextFoto.setError("Campo obrigatório.");
+    public void salvarDenuncia(View view) {
+        if (TextUtils.isEmpty(usuarioEditTextVideo.getText().toString().trim())) {
+            usuarioEditTextVideo.setError("Campo obrigatório.");
             return;
         }
 
-        if (TextUtils.isEmpty(latitudeTextViewFoto.getText().toString().trim())) {
-            latitudeTextViewFoto.setError("Campo obrigatório.");
+        if (TextUtils.isEmpty(latitudeTextViewVideo.getText().toString().trim())) {
+            latitudeTextViewVideo.setError("Campo obrigatório.");
             return;
         }
 
-        if (TextUtils.isEmpty(descricaoEditTextFoto.getText().toString().trim())) {
-            descricaoEditTextFoto.setError("Campo obrigatório.");
+        if (TextUtils.isEmpty(descricaoEditTextVideo.getText().toString().trim())) {
+            descricaoEditTextVideo.setError("Campo obrigatório.");
             return;
         }
-        String usuario = usuarioEditTextFoto.getText().toString();
-        String descricao = descricaoEditTextFoto.getText().toString();
-        Double latitude = Double.parseDouble(latitudeTextViewFoto.getText().toString());
-        Double longitude = Double.parseDouble(longitudeTextViewFoto.getText().toString());
+        String usuario = usuarioEditTextVideo.getText().toString();
+        String descricao = descricaoEditTextVideo.getText().toString();
+        Double latitude = Double.parseDouble(latitudeTextViewVideo.getText().toString());
+        Double longitude = Double.parseDouble(longitudeTextViewVideo.getText().toString());
         String foto = null;
         String cadegoria = spinnerCategoria.getSelectedItem().toString();
 
@@ -167,11 +170,11 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
 
     @Override
     public void onDateSelectedClick(Date date) {
-        dataButtonFoto.setText(new SimpleDateFormat("dd/MM/yyyy").format(date));
+        dataButtonVideo.setText(new SimpleDateFormat("dd/MM/yyyy").format(date));
         this.date = date;
     }
 
-    public void cadastrarDataFoto(View view) {
+    public void cadastrarDataVideo2(View view) {
         DatePickerFragment datePickerFragment = new DatePickerFragment();
         datePickerFragment.show(this.getFragmentManager(), "cadastroData");
     }
@@ -182,7 +185,7 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
             uri = setArquivoImagem(nomeArquivo);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-            startActivityForResult(intent, CAPTURAR_IMAGEM);
+            startActivityForResult(intent, CAPTURAR_VIDEO);
         } catch (Exception e) {
             Toast.makeText(this, "Erro ao iniciar a câmera.", Toast.LENGTH_LONG).show();
         }
@@ -191,7 +194,7 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
     private Uri setArquivoImagem(String nomeArquivo) {
         File pathDaImagem = getDiretorioDeSalvamento(nomeArquivo);
         Uri uri = null;
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             try {
                 String authority = "br.ufc.qx.qdetective.fileprovider";
                 uri = FileProvider.getUriForFile(this.getApplicationContext(), authority, pathDaImagem);
@@ -217,7 +220,7 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAPTURAR_IMAGEM) {
+        if (requestCode == CAPTURAR_VIDEO) {
             if (resultCode == RESULT_OK) {
                 RecarregarImagem recarregarImagem = new RecarregarImagem();
                 recarregarImagem.execute();
@@ -228,7 +231,7 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
     }
 
     public void capturarImagem(View v) {
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= 23) {
             getPermissoes();
         } else {
             iniciarCapturaDeFotos();
@@ -290,9 +293,10 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            fotoDenuncia.setImageBitmap(bitmap);
+//            videoDenuncia.setImageBitmap(bitmap);
         }
     }
+
 
     private void getLocationManager() {
         Listener listener = new Listener();
@@ -319,9 +323,8 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
         public void onLocationChanged(Location location) {
             String latitudeStr = String.valueOf(location.getLatitude());
             String longitudeStr = String.valueOf(location.getLongitude());
-
-            latitudeTextViewFoto.setText(latitudeStr);
-            longitudeTextViewFoto.setText(longitudeStr);
+            latitudeTextViewVideo.setText(latitudeStr);
+            longitudeTextViewVideo.setText(longitudeStr);
         }
 
         @Override
@@ -335,3 +338,4 @@ public class DenunciaFotoActivity extends Activity implements DatePickerFragment
     }
 
 }
+

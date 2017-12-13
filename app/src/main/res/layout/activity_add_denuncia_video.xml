@@ -30,8 +30,7 @@
         <VideoView
             android:id="@+id/videoDenuncia"
             android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:src="@drawable/imagem_denuncia" />
+            android:layout_height="200dp"/>
     </LinearLayout>
 
     <EditText
@@ -90,7 +89,7 @@
         android:layout_below="@+id/categoriaSpinnerVideo"
         android:layout_toEndOf="@+id/linearVideo"
         android:focusedByDefault="true"
-        android:onClick="cadastrarData" />
+        android:onClick="cadastrarDataVideo" />
 
     <Button
         android:id="@+id/buttonSalvarVideo"
@@ -98,11 +97,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/dataButtonVideo"
+        android:focusedByDefault="true"
         android:onClick="salvarDenunciaVideo"
         android:text="Salvar" />
 
     <Button
-        android:id="@+id/filmar"
+        android:id="@+id/buttonFilmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/dataButtonVideo"
@@ -110,7 +110,6 @@
         android:layout_alignStart="@+id/buttonSalvarVideo"
         android:layout_below="@+id/linearVideo"
         android:layout_marginStart="16dp"
-        android:onClick="capturarVideo"
         android:text="Filmar" />
 
 </RelativeLayout>

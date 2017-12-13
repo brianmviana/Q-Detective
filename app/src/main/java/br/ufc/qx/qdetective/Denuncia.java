@@ -8,8 +8,8 @@ public class Denuncia implements Serializable {
     public Integer id;
     public String descricao;
     public Date data;
-    public String latitude;//Double
-    public String longitude;//Double
+    public Double latitude;
+    public Double longitude;
     public String uriMidia;
     public String usuario;
     public String categoria;//ENUM
@@ -17,7 +17,7 @@ public class Denuncia implements Serializable {
     public Denuncia() {
     }
 
-    public Denuncia(Integer id, String descricao, Date data, String latitude, String longitude, String uriMidia, String usuario,String categoria) {
+    public Denuncia(Integer id, String descricao, Date data, Double latitude, Double longitude, String uriMidia, String usuario,String categoria) {
         this.id = id;
         this.descricao = descricao;
         this.data = data ;
@@ -52,19 +52,19 @@ public class Denuncia implements Serializable {
         this.data = data;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 

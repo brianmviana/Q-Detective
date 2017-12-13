@@ -170,6 +170,7 @@ public class WebServiceUtils {
     }
 
     public boolean uploadImagemBase64(String url, File foto) {
+        System.out.print(foto.getPath());
         try {
             byte[] byteArray = loadFile(foto);
             String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);

@@ -16,11 +16,13 @@ public class MenuDialogFragment extends DialogFragment {
         void onDialogEditarClick(int id);
 
         void onDialogEnviarParaNuvemClick(int id);
+
+        void onDialogDetalheClick(int id);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final CharSequence[] items = {"Editar", "Remover", "Enviar Para WebService"};
+        final CharSequence[] items = {"Editar", "Remover", "Enviar Para WebService", "Detalhes"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Opções").setItems(items, itemClick);
         escutador = (NotificarEscutadorDoDialog) getActivity();
@@ -40,6 +42,9 @@ public class MenuDialogFragment extends DialogFragment {
                     break;
                 case 2:
                     escutador.onDialogEnviarParaNuvemClick(id);
+                    break;
+                case 3:
+                    escutador.onDialogDetalheClick(id);
                     break;
             }
         }

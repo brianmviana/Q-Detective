@@ -32,7 +32,7 @@ public class ListarActivity extends Activity implements
         AdapterView.OnItemClickListener,
         MenuDialogFragment.NotificarEscutadorDoDialog, SimpleAdapter.ViewBinder {
 
-    private final String url = "http://35.226.50.35/QDetective/";
+    private final String url = "http://35.193.98.124/QDetective/";
     private boolean permisaoInternet = false;
     private SimpleAdapter adapter;
     private ListView listView;
@@ -111,6 +111,13 @@ public class ListarActivity extends Activity implements
             UploadJson uploadJson = new UploadJson();
             uploadJson.execute(denuncia);
         }
+    }
+
+    @Override
+    public void onDialogDetalheClick(int id) {
+        Intent intent = new Intent(this, DetetalheActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 
     @Override
@@ -218,10 +225,10 @@ public class ListarActivity extends Activity implements
         protected WebServiceUtils doInBackground(Long... ids) {
             WebServiceUtils webService = new WebServiceUtils();
             String id = (ids != null && ids.length == 1) ? ids[0].toString() : "";
-            List<Denuncia> denuncias = webService.getListaDenunciasJson(url, "denuncias", id);
+            List<Denuncia> denuncias = webService.getListaDenunciasJson(url, "rest/denuncias", id);
             for (Denuncia denuncia : denuncias) {
                 String path = getDiretorioDeSalvamento(denuncia.getUriMidia()).getPath();
-                webService.downloadImagemBase64(url + "arquivos", path, denuncia.getId());
+                webService.downloadImagemBase64(url + "rest/arquivos", path, denuncia.getId());
                 denuncia.setUriMidia(path);
             }
             return webService;
@@ -253,9 +260,9 @@ public class ListarActivity extends Activity implements
         protected WebServiceUtils doInBackground(Denuncia... denuncias) {
             WebServiceUtils webService = new WebServiceUtils();
             Denuncia denuncia = denuncias[0];
-            String urlDados = url + "denuncias";
+            String urlDados = url + "rest/denuncias";
             if (webService.sendDenunciaJson(urlDados, denuncia)){
-                urlDados = url + "arquivos/postFotoBase64";
+                urlDados = url + "rest/arquivos";//postFotoBase64";
                 webService.uploadImagemBase64(urlDados, getDiretorioDeSalvamento(denuncia.getUriMidia()));
             }
             return webService;

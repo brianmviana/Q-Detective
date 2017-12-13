@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imagemDetalhes"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:text="Nome de Usuario"
+        android:id="@+id/usuarioDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:text="Descrição"
+        android:id="@+id/descricaoDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+    
+    <TextView
+        android:text="dd/mm/aaaaa"
+        android:id="@+id/dataDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:text="Categoria"
+        android:id="@+id/categoriaDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+    <WebView
+        android:id="@+id/mapaDetalhes"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+</LinearLayout>
